@@ -40,7 +40,7 @@ class LLM(object):
         return answer
     
     def search_product(self, product_desc: str, n : int = 3, pprint: bool = False) -> list[str]:        
-        retriever = self.vector.as_retriever(search_kwargs={'k': n})
+        retriever = self.vector.as_retriever(search_type='mmr', search_kwargs={'k': n})
         docs = retriever.invoke(product_desc)
         docs = [doc.model_dump()['page_content'] for doc in docs]
         if pprint:

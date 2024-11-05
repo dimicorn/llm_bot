@@ -1,18 +1,18 @@
-from tomllib import load
+import os
+import streamlit as st
 from telebot.async_telebot import AsyncTeleBot
 from asyncio import run
 from openai import OpenAI
 from langchain_openai import OpenAIEmbeddings
-from langchain_community.document_loaders import PyPDFDirectoryLoader
+from langchain_community.document_loaders import UnstructuredPDFLoader
 from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from llm import LLM
-import streamlit as st
-import os
+
 
 os.environ['OPENAI_API_KEY'] = st.secrets['open_ai']
 
-document_loader = PyPDFDirectoryLoader(st.secrets['data_path'])
+document_loader = UnstructuredPDFLoader(st.secrets['data_path'])
 textsplitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=20)
 raw_data = document_loader.load_and_split(textsplitter)
 embeddings = OpenAIEmbeddings()
