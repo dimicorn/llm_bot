@@ -8,16 +8,9 @@ from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from llm import LLM
 import streamlit as st
-# import os
+import os
 
-# Everything is accessible via the st.secrets dict:
-
-# st.write("DB username:", st.secrets["db_username"])
-# st.write("DB password:", st.secrets["db_password"])
-
-# print(st.secrets)
-# with open(f'{os.path.expanduser('~')}/.streamlit/config.toml', 'rb') as f:
-#     cfg = load(f)
+os.environ['OPENAI_API_KEY'] = st.secrets['open_ai']
 
 document_loader = PyPDFDirectoryLoader(st.secrets['data_path'])
 textsplitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=20)
