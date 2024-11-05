@@ -7,9 +7,10 @@ from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from llm import LLM
+import os
 
 
-with open('config.toml') as f:
+with open(f'{os.path.expanduser('~')}/.streamlit/config.toml', 'rb') as f:
     cfg = load(f)
 
 document_loader = PyPDFDirectoryLoader(cfg['data_path'])
