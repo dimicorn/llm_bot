@@ -1,7 +1,7 @@
-from openai import OpenAI
 from yaml import safe_load
 from telebot.async_telebot import AsyncTeleBot
 from asyncio import run
+from openai import OpenAI
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_core.vectorstores import InMemoryVectorStore
@@ -28,7 +28,7 @@ async def send_welcome(message):
 async def send_text(message):
     client = OpenAI(api_key=cfg['open_ai'])
     llm = LLM(client, vector_store)
-    answer = llm.rag_search(message.text)
+    answer = llm.rag_search(message.text, pprint=True)
     await bot.send_message(message.chat.id, answer)
 
 def main():
