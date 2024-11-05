@@ -63,12 +63,14 @@ openai==1.53.0
 orjson==3.10.11
 packaging==23.2
 pandas==2.2.3
+pdfminer==20191125
 pillow==10.4.0
 propcache==0.2.0
 protobuf==5.28.3
 psutil==6.1.0
 pyarrow==18.0.0
 pycparser==2.22
+pycryptodome==3.21.0
 pydantic==2.9.2
 pydantic-settings==2.6.1
 pydantic_core==2.23.4
