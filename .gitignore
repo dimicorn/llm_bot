@@ -1,1 +1,4 @@
 *.yaml
+venv/
+__pycache__/
+data/
