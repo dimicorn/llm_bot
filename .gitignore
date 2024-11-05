@@ -1,4 +1,4 @@
-*.yaml
+*.toml
 venv/
 __pycache__/
 data/

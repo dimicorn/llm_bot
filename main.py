@@ -1,4 +1,4 @@
-from yaml import safe_load
+from tomllib import load
 from telebot.async_telebot import AsyncTeleBot
 from asyncio import run
 from openai import OpenAI
@@ -9,8 +9,8 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from llm import LLM
 
 
-with open('config.yaml') as f:
-    cfg = safe_load(f)
+with open('config.toml') as f:
+    cfg = load(f)
 
 document_loader = PyPDFDirectoryLoader(cfg['data_path'])
 textsplitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=20)
